@@ -231,11 +231,11 @@ class Mollie_iDEAL_Payment
 	/**
 	 * Verstuur een HTTP verzoek naar de Mollie API.
 	 *
-	 * @param $path
-	 * @param $data
-	 * @return mixed
+	 * @param $path string
+	 * @param $data string
+	 * @return bool|string
 	 */
-	protected function _sendRequest ($path, array $data = array())
+	protected function _sendRequest ($path, $data = '')
 	{
 		$ch = curl_init();
 		

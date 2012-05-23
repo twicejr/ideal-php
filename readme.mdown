@@ -1,5 +1,9 @@
 ![Mollie](http://www.mollie.nl/files/Mollie-Logo-Style-Small.png)
 
+# Mollie iDEAL API #
+
+Gebruik iDEAL zonder vaste kosten of procedures. Direct betalingen per iDEAL ontvangen via onze API.
+
 # Wat heeft u nodig? #
 Om de iDEAL koppeling te testen heeft u de volgende gegevens nodig:
 
