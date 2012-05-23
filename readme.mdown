@@ -1,0 +1,43 @@
+![Mollie](http://www.mollie.nl/files/Mollie-Logo-Style-Small.png)
+
+# Wat heeft u nodig? #
+Om de iDEAL koppeling te testen heeft u de volgende gegevens nodig:
+
++ Uw Mollie partner ID: wanneer u bent ingelogd vindt u deze op de [Accountgegevens](https://www.mollie.nl/beheer/account/) pagina.
++ Een [actief betaalprofiel](https://www.mollie.nl/beheer/betaaldiensten/profielen/) waar de betalingen aan gekoppeld worden.
++ Om daadwerkelijk iDEAL betalingen te kunnen ontvangen dient iDEAL eerst geactiveerd te worden voor uw account. U kunt dit doen door de benodigde informatie aan ons te leveren via de [Diensten](https://www.mollie.nl/beheer/diensten) pagina.
+
+# Hoe werkt de API? #
+
+Om een iDEAL-betaling te realiseren moet u een aantal stappen doorlopen. Deze stappen zijn als volgt:
+
++ U vraagt bij onze API de lijst van banken op en laat uw klant haar bank kiezen.
++ U vraagt bij onze API een betaling aan op uw partner_id voor de gekozen bank en het bedrag. U slaat de teruggekregen informatie op en stuurt uw klant naar de URL die ook in het antwoord op de aanvraag van de betaling zit.
++ De API meldt zich na de betaling op de achtergrond bij een door u opgegeven url, waarna u de betaling controleert en dit resultaat bewaart.
++ Wij sturen nu de klant naar een door u opgegeven URL, zodat hij uw winkel weer inkomt. U toont de klant op die URL een melding dat het gelukt is, of dat het niet gelukt is en u verwerkt eventueel de order.
+
+Onze API werkt middels HTTP requests. Wanneer u een HTTP request naar onze server stuurt, kunt u met behulp van POST of GET variabelen de waarden meesturen. De a-variabele wordt gebruikt om de API in een bepaalde 'mode' te zetten. We behandelen nu de aanroepen en antwoorden van bovengenoemde stappen.
+
+# Testmode #
+Bij de eerste stap haalt u de lijst van actieve banken op die op dit moment iDEAL-betalingen ondersteunen. Als u betalingen wil testen, zonder daadwerkelijk een betaling uit te voeren kan dit door de 'testmode' aan te zetten. U krijgt dan een extra bank in deze lijst terug om te testen, namelijk de "TBM Bank" (a.k.a. "The Big Mollie Bank"). Bij stap 3 moet u dan (vanwege extra veiligheidsmaatregelen) ook een extra parameter 'testmode=true' meesturen om aan te geven dat het om een testbetaling gaat, welke u na het live gaan van uw product weer moet verwijderen.
+
+Op de [instellingen-pagina](https://www.mollie.nl/beheer/betaaldiensten/instellingen/) kunt u de iDEAL-testmode aan en uit te zetten.
+
+# Ondersteunde betaalmethodes #
+### iDEAL ###
+Met iDEAL kunt u vertrouwd, veilig en gemakkelijk uw online aankopen afrekenen. iDEAL is het systeem dat u direct koppelt aan uw internetbankierprogramma bij een online aankoop.
+Via [Mollie](http://www.mollie.nl/) is iDEAL gemakkelijk aan te sluiten zonder de gebruikelijke technische en administratieve rompslomp. Mollie geeft u op ieder moment toegang tot uw transactieoverzichten en andere statistieken. Tevens is het mogelijk per e-mail of SMS een notificatie te ontvangen bij elke gelukte betaling. [Mollie](http://www.mollie.nl/) is hierdoor dus een perfecte partner op het gebied van iDEAL en is het dan ook niet verbazingwekkend dat [Mollie](http://www.mollie.nl/) ondertussen op meer dan 10.000 websites iDEAL-betalingen mag verzorgen.
+
+# Licentie #
+Wij maken gebruik van de [BSD (Berkeley Software Distribution) License](http://www.opensource.org/licenses/bsd-license.php).  
+Copyright (c) 2012, Mollie B.V.
+
+# Support #
+W: www.mollie.nl  
+E: info@mollie.nl  
+T: +31 20 - 612 88 55
+
++ [Meer informatie over iDEAL via Mollie](https://www.mollie.nl/betaaldiensten/ideal/)
++ [Meer informatie over de iDEAL API van Mollie](https://www.mollie.nl/support/documentatie/betaaldiensten/ideal/)
+
+![Powerd By Mollie](http://www.mollie.nl/images/badge-betaling-medium.png)
