@@ -153,10 +153,6 @@ class Mollie_iDEAL_Payment
 			http_build_query($query_variables, '', '&')
 		);
 
-		if (empty($create_xml)) {
-			return false;
-		}
-
 		$create_object = $this->_XMLtoObject($create_xml);
 
 		if (!$create_object or $this->_XMLisError($create_object)) {
@@ -196,9 +192,6 @@ class Mollie_iDEAL_Payment
 			'/xml/ideal/',
 			http_build_query($query_variables, '', '&')
 			);
-
-		if (empty($check_xml))
-			return false;
 
 		$check_object = $this->_XMLtoObject($check_xml);
 
@@ -244,10 +237,6 @@ class Mollie_iDEAL_Payment
 		return true;
 	}
 
-/*
-	PROTECTED FUNCTIONS
-*/
-
 	/**
 	 * Verstuur een HTTP verzoek naar de Mollie API.
 	 *
@@ -275,7 +264,7 @@ class Mollie_iDEAL_Payment
 
 	protected function _XMLtoObject ($xml)
 	{
-		$xml_object = simplexml_load_string($xml);
+		$xml_object = @simplexml_load_string($xml);
 		if (!$xml_object)
 		{
 			$this->error_code = -2;
@@ -367,6 +356,10 @@ class Mollie_iDEAL_Payment
 		return $this->bank_id;
 	}
 
+	/**
+	 * @param $amount
+	 * @return bool|float
+	 */
 	public function setAmount ($amount)
 	{
 		if (is_string($amount) && !ctype_digit($amount)) {
