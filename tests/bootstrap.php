@@ -2,7 +2,7 @@
 require_once "class.http_request_test.php";
 require_once "class.mollie_fakeweb.php";
 require_once "class.mollie_fakeweb_testcase.php";
-require_once "../Mollie/iDEAL/Payment.php";
+require_once dirname(dirname(__FILE__)) . "/Mollie/iDEAL/Payment.php";
 
 /**
  * @codeCoverageIgnore
