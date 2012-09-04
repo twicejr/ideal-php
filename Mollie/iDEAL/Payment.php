@@ -48,7 +48,7 @@ class Mollie_iDEAL_Payment
 
 	public function __construct ($partner_id)
 	{
-		$this->partner_id = $partner_id;
+		$this->setPartnerId($partner_id);
 	}
 
 	/**
@@ -143,9 +143,9 @@ class Mollie_iDEAL_Payment
 			'returnurl'   => $this->getReturnURL(),
 		);
 		
-		if ($this->profile_key)
+		if ($this->getProfileKey())
 		{
-			$query_variables['profile_key'] = $this->profile_key;
+			$query_variables['profile_key'] = $this->getProfileKey();
 		}
 
 		$create_xml = $this->_sendRequest(
@@ -180,7 +180,7 @@ class Mollie_iDEAL_Payment
 		
 		$query_variables = array (
 			'a'              => 'check',
-			'partnerid'      => $this->partner_id,
+			'partnerid'      => $this->getPartnerId(),
 			'transaction_id' => $this->getTransactionId(),
 		);
 
