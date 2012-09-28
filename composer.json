@@ -1,5 +1,5 @@
 {
-    "name": "bugbyte/ideal-php",
+    "name": "mollienl/ideal-php",
     "description": "Mollie iDEAL module voor PHP",
     "autoload": {
         "classmap": ["Mollie/"]

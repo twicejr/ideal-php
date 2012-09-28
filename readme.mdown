@@ -11,6 +11,18 @@ Om de iDEAL koppeling te testen heeft u de volgende gegevens nodig:
 + Een [actief betaalprofiel](https://www.mollie.nl/beheer/betaaldiensten/profielen/) waar de betalingen aan gekoppeld worden.
 + Om daadwerkelijk iDEAL betalingen te kunnen ontvangen dient iDEAL eerst geactiveerd te worden voor uw account. U kunt dit doen door de benodigde informatie aan ons te leveren via de [Diensten](https://www.mollie.nl/beheer/diensten) pagina.
 
+# Installatie #
+
+De API-code installeren gaat het makkelijkst met [Composer](http://getcomposer.org/doc/00-intro.md).
+Een voorbeeld van de composer.json om deze API in uw project op te nemen:
+
+    {
+        "require": {
+            "mollienl/ideal-php": "1.0.x-dev"
+        }
+    }
+
+
 # Hoe werkt de API? #
 
 Om een iDEAL-betaling te realiseren moet u een aantal stappen doorlopen. Deze stappen zijn als volgt:
@@ -33,12 +45,12 @@ Met iDEAL kunt u vertrouwd, veilig en gemakkelijk uw online aankopen afrekenen. 
 Via [Mollie](http://www.mollie.nl/) is iDEAL gemakkelijk aan te sluiten zonder de gebruikelijke technische en administratieve rompslomp. Mollie geeft u op ieder moment toegang tot uw transactieoverzichten en andere statistieken. Tevens is het mogelijk per e-mail of SMS een notificatie te ontvangen bij elke gelukte betaling. [Mollie](http://www.mollie.nl/) is hierdoor dus een perfecte partner op het gebied van iDEAL en is het dan ook niet verbazingwekkend dat [Mollie](http://www.mollie.nl/) ondertussen op meer dan 10.000 websites iDEAL-betalingen mag verzorgen.
 
 # Licentie #
-Wij maken gebruik van de [BSD (Berkeley Software Distribution) License](http://www.opensource.org/licenses/bsd-license.php).  
+Wij maken gebruik van de [BSD (Berkeley Software Distribution) License](http://www.opensource.org/licenses/bsd-license.php).
 Copyright (c) 2012, Mollie B.V.
 
 # Support #
-W: www.mollie.nl  
-E: info@mollie.nl  
+W: www.mollie.nl
+E: info@mollie.nl
 T: +31 20 - 612 88 55
 
 + [Meer informatie over iDEAL via Mollie](https://www.mollie.nl/betaaldiensten/ideal/)
