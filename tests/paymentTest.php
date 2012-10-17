@@ -285,16 +285,16 @@ EOX;
 	public function testSetAmountCannotBeLessThanMinimum()
 	{
 		$iDEAL = new Mollie_iDEAL_Payment(1001);
-		$this->assertFalse($iDEAL->setAmount(117));
+		$this->assertFalse($iDEAL->setAmount(Mollie_iDEAL_Payment::MIN_TRANS_AMOUNT - 1));
 		$this->assertEmpty($iDEAL->getAmount());
 
-		$this->assertEquals(118, $iDEAL->setAmount(118));
-		$this->assertEquals(118, $iDEAL->getAmount());
+		$this->assertEquals(Mollie_iDEAL_Payment::MIN_TRANS_AMOUNT, $iDEAL->setAmount(Mollie_iDEAL_Payment::MIN_TRANS_AMOUNT));
+		$this->assertEquals(Mollie_iDEAL_Payment::MIN_TRANS_AMOUNT, $iDEAL->getAmount());
 
 		$this->assertFalse($iDEAL->setAmount("foobar"));
 
-		$iDEAL->setAmount(120.01);
-		$this->assertEquals(120, $iDEAL->getAmount());
+		$iDEAL->setAmount(Mollie_iDEAL_Payment::MIN_TRANS_AMOUNT + 0.01);
+		$this->assertEquals(Mollie_iDEAL_Payment::MIN_TRANS_AMOUNT, $iDEAL->getAmount());
 	}
 
 	public function testCannotSetPartnerIdToProfileKey()

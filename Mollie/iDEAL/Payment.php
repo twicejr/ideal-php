@@ -9,7 +9,7 @@ class Mollie_iDEAL_Payment
 	/**
 	 * Minimum bedrag in cent.
 	 */
-	const MIN_TRANS_AMOUNT = 118;
+	const MIN_TRANS_AMOUNT = 120;
 
 	protected $partner_id;
 	protected $profile_key;
