@@ -8,7 +8,7 @@ Gebruik iDEAL zonder vaste kosten of procedures. Direct betalingen per iDEAL ont
 Om de iDEAL koppeling te testen heeft u de volgende gegevens nodig:
 
 + Uw Mollie partner ID: wanneer u bent ingelogd vindt u deze op de [Accountgegevens](https://www.mollie.nl/beheer/account/) pagina.
-+ Een [actief betaalprofiel](https://www.mollie.nl/beheer/betaaldiensten/profielen/) waar de betalingen aan gekoppeld worden.
++ Een [actief websiteprofiel](https://www.mollie.nl/beheer/account/profielen/) waar de betalingen aan gekoppeld worden.
 + Om daadwerkelijk iDEAL betalingen te kunnen ontvangen dient iDEAL eerst geactiveerd te worden voor uw account. U kunt dit doen door de benodigde informatie aan ons te leveren via de [Diensten](https://www.mollie.nl/beheer/diensten) pagina.
 
 # Hoe werkt de API? #
@@ -31,6 +31,13 @@ Op de [instellingen-pagina](https://www.mollie.nl/beheer/betaaldiensten/instelli
 ### iDEAL ###
 Met iDEAL kunt u vertrouwd, veilig en gemakkelijk uw online aankopen afrekenen. iDEAL is het systeem dat u direct koppelt aan uw internetbankierprogramma bij een online aankoop.
 Via [Mollie](http://www.mollie.nl/) is iDEAL gemakkelijk aan te sluiten zonder de gebruikelijke technische en administratieve rompslomp. Mollie geeft u op ieder moment toegang tot uw transactieoverzichten en andere statistieken. Tevens is het mogelijk per e-mail of SMS een notificatie te ontvangen bij elke gelukte betaling. [Mollie](http://www.mollie.nl/) is hierdoor dus een perfecte partner op het gebied van iDEAL en is het dan ook niet verbazingwekkend dat [Mollie](http://www.mollie.nl/) ondertussen op meer dan 10.000 websites iDEAL-betalingen mag verzorgen.
+
+# Veelgestelde vragen #
++ Waarom bevat de module een lijst van rootcertificaten?
+
+Op sommige servers is de lijst met rootcertificaten niet aanwezig of gedateerd. Hierdoor werkt SSL communicatie met
+Mollie soms niet. De module bevat daarom de rootcertificaten die nodig zijn om veilig met Mollie te communiceren. Deze
+worden alleen gebruikt wanneer het communiceren met de al geïnstalleerde certificaten niet mogelijk is.
 
 # Licentie #
 Wij maken gebruik van de [BSD (Berkeley Software Distribution) License](http://www.opensource.org/licenses/bsd-license.php).  
