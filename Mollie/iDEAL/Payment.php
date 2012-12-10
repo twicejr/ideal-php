@@ -276,8 +276,6 @@ class Mollie_iDEAL_Payment
 			$body = curl_exec($ch);
 		}
 
-		var_dump(curl_error($ch));
-
 		curl_close($ch);
 
 		return $body;	
