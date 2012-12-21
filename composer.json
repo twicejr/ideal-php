@@ -1,6 +1,8 @@
 {
     "name": "mollienl/ideal-php",
     "description": "Mollie iDEAL module voor PHP",
+	"license": "BSD-2-Clause",
+	"homepage": "https://www.mollie.nl/",
     "autoload": {
         "classmap": ["Mollie/"]
     },
@@ -8,5 +10,8 @@
         "branch-alias": {
             "dev-master": "1.0.x-dev"
         }
-    }
+    },
+	"support": {
+		"email": "info@mollie.nl"
+	}
 }
