@@ -4,8 +4,7 @@
  */
 class idealClassTest extends PHPUnit_Framework_TestCase
 {
-	protected static $banks_xml = <<< EOX
-<?xml version="1.0" ?>
+	protected static $banks_xml = '<?xml version="1.0" ?>
 <response>
 	<bank>
 		<bank_id>1234</bank_id>
@@ -15,17 +14,15 @@ class idealClassTest extends PHPUnit_Framework_TestCase
 		<bank_id>0678</bank_id>
 		<bank_name>Test bank 2</bank_name>
 	</bank>
-	<message>This is the current list of banks and their ID's that currently support iDEAL-payments</message>
-</response>
-EOX;
+	<message>This is the current list of banks and their ID\'s that currently support iDEAL-payments</message>
+</response>';
 
 	protected static $expectedBanks = array (
 		'1234' => 'Test bank 1',
 		'0678' => 'Test bank 2'
 	);
 
-	protected static $check_payment_xml = <<< EOX
-<?xml version="1.0"?>
+	protected static $check_payment_xml = '<?xml version="1.0"?>
 <response>
 	<order>
 		<transaction_id>1234567890</transaction_id>
@@ -35,10 +32,9 @@ EOX;
 		<message>This iDEAL-order has successfuly been payed for, and this is the first time you check it.</message>
 	</order>
 </response>
-EOX;
+';
 
-	protected static $create_payment_xml = <<< EOX
-<?xml version="1.0"?>
+	protected static $create_payment_xml = '<?xml version="1.0"?>
 <response>
 	<order>
 		<transaction_id>1234567890</transaction_id>
@@ -48,10 +44,9 @@ EOX;
 		<message>Your iDEAL-payment has succesfuly been setup. Your customer should visit the given URL to make the payment</message>
 	</order>
 </response>
-EOX;
+';
 
-	protected static $create_payment_bankerror_xml = <<< EOX
-<?xml version="1.0"?>
+	protected static $create_payment_bankerror_xml = '<?xml version="1.0"?>
 <response>
 	<order>
 		<transaction_id></transaction_id>
@@ -62,17 +57,16 @@ EOX;
 		<message>Your iDEAL-payment has not been setup because of a temporary technical error at the bank</message>
 	</order>
 </response>
-EOX;
+';
 
-	protected static $create_payment_mollieerror_xml = <<< EOX
-<?xml version="1.0" ?>
+	protected static $create_payment_mollieerror_xml = '<?xml version="1.0" ?>
 <response>
 	<item type="error">
 		<errorcode>-3</errorcode>
 		<message>The Report URL you have specified has an issue</message>
 	</item>
 </response>
-EOX;
+';
 
 	public function testBankListActionReturnsArrayOfBanks()
 	{
@@ -221,6 +215,11 @@ EOX;
 
 	public function testAPIErrorDetectedCorrectly ()
 	{
+		if (version_compare(phpversion(), "5.3", "<"))
+		{
+			$this->markTestSkipped("Requires PHP 5.3");
+		}
+
 		$method = new ReflectionMethod("Mollie_iDEAL_Payment::_XMLisError");
 		$method->setAccessible(TRUE);
 
@@ -239,6 +238,11 @@ EOX;
 
 	public function testNormalXmlIsNotAnError()
 	{
+		if (version_compare(phpversion(), "5.3", "<"))
+		{
+			$this->markTestSkipped("Requires PHP 5.3");
+		}
+
 		$method = new ReflectionMethod("Mollie_iDEAL_Payment::_XMLisError");
 		$method->setAccessible(TRUE);
 
@@ -250,6 +254,11 @@ EOX;
 
 	public function testBankErrorDetectedCorrectly()
 	{
+		if (version_compare(phpversion(), "5.3", "<"))
+		{
+			$this->markTestSkipped("Requires PHP 5.3");
+		}
+
 		$method = new ReflectionMethod("Mollie_iDEAL_Payment::_XMLisError");
 		$method->setAccessible(TRUE);
 
@@ -272,6 +281,11 @@ EOX;
 
 	public function testInvalidXmlDetected ()
 	{
+		if (version_compare(phpversion(), "5.3", "<"))
+		{
+			$this->markTestSkipped("Requires PHP 5.3");
+		}
+
 		$method = new ReflectionMethod("Mollie_iDEAL_Payment::_XMLtoObject");
 		$method->setAccessible(TRUE);
 
