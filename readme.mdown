@@ -1,6 +1,6 @@
 ![Mollie](http://www.mollie.nl/files/Mollie-Logo-Style-Small.png)
 
-# Mollie iDEAL API #
+# Mollie iDEAL API [![Build Status](https://travis-ci.org/mollienl/ideal-php.png)](https://travis-ci.org/mollienl/ideal-php) #
 
 Gebruik iDEAL zonder vaste kosten of procedures. Direct betalingen per iDEAL ontvangen via onze API.
 
