@@ -9,13 +9,6 @@ $description = 'Testbetaling'; // Beschrijving die consument op zijn/haar afschr
 $return_url  = 'http://www.domein.nl/return.php'; // URL waarnaar de consument teruggestuurd wordt na de betaling
 $report_url  = 'http://www.domein.nl/report.php'; // URL die Mollie aanvraagt (op de achtergrond) na de betaling om de status naar op te sturen
 
-if (!in_array('ssl', stream_get_transports()))
-{
-	echo "<h1>Foutmelding</h1>";
-	echo "<p>Uw PHP installatie heeft geen SSL ondersteuning. SSL is nodig voor de communicatie met de Mollie iDEAL API.</p>";
-	exit;	
-}
-
 $iDEAL = new Mollie_iDEAL_Payment ($partner_id);
 //$iDEAL->setTestMode();
 
