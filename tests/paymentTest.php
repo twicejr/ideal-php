@@ -301,4 +301,13 @@ class idealClassTest extends PHPUnit_Framework_TestCase
 		$iDEAL = new Mollie_iDEAL_Payment(1001);
 		$this->assertFalse($iDEAL->setPartnerId("decafbad"));
 	}
+
+	public function testSetBankIdVerifiesTestbankCannotBeUsedWithTestmodeDisabled ()
+	{
+		$iDEAL = new Mollie_iDEAL_Payment(123);
+		$this->assertFalse($iDEAL->setBankId(Mollie_iDEAL_Payment::TEST_BANK_ID));
+
+		$iDEAL->setTestmode();
+		$this->assertSame(Mollie_iDEAL_Payment::TEST_BANK_ID, $iDEAL->setBankId(Mollie_iDEAL_Payment::TEST_BANK_ID));
+	}
 }
