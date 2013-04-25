@@ -245,9 +245,9 @@ class Mollie_iDEAL_Payment
 	 */
 	protected function _sendRequest ($path, $data = '')
 	{
-		$ch = curl_init();
+		$url = rtrim($this->api_host, '/')."{$path}?{$data}";
 
-		curl_setopt($ch, CURLOPT_URL, "{$this->api_host}{$path}?{$data}");
+		$ch = curl_init($url);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 		curl_setopt($ch, CURLOPT_TIMEOUT, 10);
 		curl_setopt($ch, CURLOPT_HEADER, FALSE);
