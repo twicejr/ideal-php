@@ -219,6 +219,7 @@ class Mollie_iDEAL_Payment
 			'partnerid'   => $this->partner_id,
 			'amount'      => $this->getAmount(),
 			'description' => $this->getDescription(),
+			'profile_key' => $this->getProfileKey(),
 		);
 
 		$create_xml = $this->_sendRequest(
