@@ -13,6 +13,8 @@ class Mollie_iDEAL_Payment
 	const STATUS_EXPIRED        = 'Expired';
 	const STATUS_CHECKED_BEFORE = 'CheckedBefore';
 
+	const TEST_BANK_ID = '9999';
+
 	protected $partner_id;
 	protected $profile_key;
 
@@ -224,6 +226,7 @@ class Mollie_iDEAL_Payment
 			'partnerid'   => $this->partner_id,
 			'amount'      => $this->getAmount(),
 			'description' => $this->getDescription(),
+			'profile_key' => $this->getProfileKey(),
 		);
 
 		$create_xml = $this->_sendRequest(
@@ -250,9 +253,9 @@ class Mollie_iDEAL_Payment
 	 */
 	protected function _sendRequest ($path, $data = '')
 	{
-		$ch = curl_init();
+		$url = rtrim($this->api_host, '/')."{$path}?{$data}";
 
-		curl_setopt($ch, CURLOPT_URL, "{$this->api_host}{$path}?{$data}");
+		$ch = curl_init($url);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 		curl_setopt($ch, CURLOPT_TIMEOUT, 10);
 		curl_setopt($ch, CURLOPT_HEADER, FALSE);
@@ -375,6 +378,9 @@ class Mollie_iDEAL_Payment
 	public function setBankId ($bank_id)
 	{
 		if (!is_numeric($bank_id))
+			return false;
+
+		if (!$this->testmode && $bank_id == self::TEST_BANK_ID)
 			return false;
 
 		return ($this->bank_id = $bank_id);

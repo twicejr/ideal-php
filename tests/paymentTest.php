@@ -69,6 +69,14 @@ class idealClassTest extends PHPUnit_Framework_TestCase
 </response>
 ';
 
+	protected static $create_paymentlink_xml = '<?xml version="1.0" ?>
+<response>
+	<link>
+		<URL>https://secure.mollie.nl/pay/ideal/1001-12346578/2500_Lege_omschrijving/42bd9204d184390204c475c723e5f52e1fc5b3c7</URL>
+		<message>Your iDEAL-link has been successfully setup. Your customer should visit the given URL to make the payment.</message>
+	</link>
+</response>';
+
 	public function testBankListActionReturnsArrayOfBanks()
 	{
 		$iDEAL = $this->getMock("Mollie_iDEAL_Payment", array("_sendRequest"), array(1001));
@@ -320,5 +328,38 @@ class idealClassTest extends PHPUnit_Framework_TestCase
 	{
 		$iDEAL = new Mollie_iDEAL_Payment(1001);
 		$this->assertFalse($iDEAL->setPartnerId("decafbad"));
+	}
+
+	public function testSetBankIdAcceptsTestbankWithTestmodeEnabled ()
+	{
+		$iDEAL = new Mollie_iDEAL_Payment(123);
+		$iDEAL->setTestmode();
+		$this->assertSame(Mollie_iDEAL_Payment::TEST_BANK_ID, $iDEAL->setBankId(Mollie_iDEAL_Payment::TEST_BANK_ID));
+
+		// Accept other banks as well
+		$this->assertSame('0031', $iDEAL->setBankId('0031'));
+	}
+
+	public function testSetBankIdRejectsTestbankWithTestmodeDisabled ()
+	{
+		$iDEAL = new Mollie_iDEAL_Payment(123);
+		$this->assertFalse($iDEAL->setBankId(Mollie_iDEAL_Payment::TEST_BANK_ID));
+
+		// Accept other banks though
+		$this->assertSame('0031', $iDEAL->setBankId('0031'));
+	}
+
+	public function testCreatePaymentLinkSendsAllParametersAndWorks ()
+	{
+		$iDEAL = $this->getMock("Mollie_iDEAL_Payment", array("_sendRequest"), array(1001));
+		$iDEAL->expects($this->once())
+			->method("_sendRequest")
+			->with("/xml/ideal/", "a=create-link&partnerid=1001&amount=2500&description=Hello+world&profile_key=12345678")
+			->will($this->returnValue(self::$create_paymentlink_xml));
+
+		$iDEAL->setProfileKey('12345678');
+		$result = $iDEAL->CreatePaymentLink('Hello world', 2500);
+		$this->assertTrue($result);
+		$this->assertSame('https://secure.mollie.nl/pay/ideal/1001-12346578/2500_Lege_omschrijving/42bd9204d184390204c475c723e5f52e1fc5b3c7', $iDEAL->getPaymentURL());
 	}
 }
