@@ -1,0 +1,9 @@
+![Mollie](https://www.mollie.nl/files/Mollie-Logo-Style-Small.png)
+
+# Changelog #
+
+## Wijzigingen in versie 1.17 ##
++ Geen controle op minimum bedrag in de class, dit wordt door de API gedaan.
++ Gebruik profile key bij createPaymentLink().
++ Testbank kan alleen gebruikt worden wanneer de testmodus ingeschakeld staat.
+
