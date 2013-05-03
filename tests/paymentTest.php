@@ -53,7 +53,7 @@ class idealClassTest extends PHPUnit_Framework_TestCase
 		<transaction_id></transaction_id>
 		<amount></amount>
 		<currency></currency>
-		<URL>https://www.mollie.nl/files/idealbankfailure.html</URL>
+		<URL>https://www.mollie.nl/partners/ideal-bank-failure</URL>
 		<error>true</error>
 		<message>Your iDEAL-payment has not been setup because of a temporary technical error at the bank</message>
 	</order>
@@ -298,7 +298,7 @@ class idealClassTest extends PHPUnit_Framework_TestCase
 				<transaction_id></transaction_id>
 				<amount></amount>
 				<currency></currency>
-				<URL>https://www.mollie.nl/files/idealbankfailure.html</URL>
+				<URL>https://www.mollie.nl/partners/ideal-bank-failure</URL>
 				<error>true</error>
 				<message>Your iDEAL-payment has not been setup because of a temporary technical error at the bank</message>
 			</order>
@@ -361,5 +361,24 @@ class idealClassTest extends PHPUnit_Framework_TestCase
 		$result = $iDEAL->CreatePaymentLink('Hello world', 2500);
 		$this->assertTrue($result);
 		$this->assertSame('https://secure.mollie.nl/pay/ideal/1001-12346578/2500_Lege_omschrijving/42bd9204d184390204c475c723e5f52e1fc5b3c7', $iDEAL->getPaymentURL());
+	}
+
+	/**
+	 * @param $url
+	 * @param $expected
+	 * @dataProvider dpReturnUrls
+	 */
+	public function testCanSetReturnUrl($url, $expected)
+	{
+		$iDEAL = new Mollie_iDEAL_Payment(1001);
+		$this->assertEquals($expected ? $url : NULL, $iDEAL->setReturnURL($url));
+	}
+
+	public function dpReturnUrls()
+	{
+		return array(
+			array("faksdkjhfskjdhfkjsdhfkjdshf", FALSE),
+			array("http://www.good-id.org/credits/back", TRUE),
+		);
 	}
 }
