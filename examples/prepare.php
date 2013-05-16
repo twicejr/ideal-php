@@ -3,7 +3,7 @@
 require_once '../Mollie/iDEAL/Payment.php';
 
 $partner_id  = 000000; // Uw mollie partner ID
-$amount      = 118;    // Het af te rekenen bedrag in centen (!!!)
+$amount      = 120;    // Het af te rekenen bedrag in centen (!!!)
 $description = 'Testbetaling'; // Beschrijving die consument op zijn/haar afschrift ziet.
 
 $return_url  = 'http://www.domein.nl/return.php'; // URL waarnaar de consument teruggestuurd wordt na de betaling
