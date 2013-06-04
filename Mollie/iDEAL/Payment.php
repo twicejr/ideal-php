@@ -13,7 +13,8 @@ class Mollie_iDEAL_Payment
 	const STATUS_EXPIRED        = 'Expired';
 	const STATUS_CHECKED_BEFORE = 'CheckedBefore';
 
-	const TEST_BANK_ID = '9999';
+	const TEST_BANK_ID  = '9999';
+	const TEST_BANK_BIC = 'TESTNL99';
 
 	protected $partner_id;
 	protected $profile_key;
@@ -377,10 +378,10 @@ class Mollie_iDEAL_Payment
 
 	public function setBankId ($bank_id)
 	{
-		if (!is_numeric($bank_id))
+		if (ctype_digit((string) $bank_id) && strlen($bank_id) != 4)
 			return false;
 
-		if (!$this->testmode && $bank_id == self::TEST_BANK_ID)
+		if (!$this->testmode && ($bank_id == self::TEST_BANK_ID || $bank_id == self::TEST_BANK_BIC))
 			return false;
 
 		return ($this->bank_id = $bank_id);
