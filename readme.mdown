@@ -23,6 +23,8 @@ Een voorbeeld van de composer.json om deze API in uw project op te nemen:
     }
 
 
+U kunt ook handmatig [alle bestanden downloaden](https://github.com/mollienl/ideal-php/archive/master.zip) en deze dan zelf aan uw website toevoegen.
+
 # Hoe werkt de API? #
 
 Om een iDEAL-betaling te realiseren moet u een aantal stappen doorlopen. Deze stappen zijn als volgt:
