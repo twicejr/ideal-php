@@ -387,7 +387,11 @@ class idealClassTest extends PHPUnit_Framework_TestCase
 	{
 		return array(
 			array("faksdkjhfskjdhfkjsdhfkjdshf", FALSE),
-			array("http://www.good-id.org/credits/back", TRUE),
+			array("ftp://file.server.nl/report", FALSE),
+			array("http://no-can-do", FALSE),
+			array("http://www.good-id.org/credits/back?param=ok", TRUE),
+			array("https://very.secure:443/hello", TRUE),
+			array("http://nu.nl", TRUE),
 		);
 	}
 }
