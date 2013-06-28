@@ -432,7 +432,7 @@ class Mollie_iDEAL_Payment
 
 	public function setReturnURL ($return_url)
 	{
-		if (!preg_match('~^(https?)://([\w\d\-\.]{2,})\.(\w{2,})~i', $return_url))
+		if (!preg_match('~^https?://~i', $return_url))
 		{
 			return FALSE;
 		}
@@ -447,7 +447,7 @@ class Mollie_iDEAL_Payment
 
 	public function setReportURL ($report_url)
 	{
-		if (!preg_match('~^(https?)://([\w\d\-\.]{2,})\.(\w{2,})~i', $report_url))
+		if (!preg_match('~^https?://~i', $report_url))
 		{
 			return FALSE;
 		}
