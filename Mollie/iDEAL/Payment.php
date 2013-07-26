@@ -379,7 +379,9 @@ class Mollie_iDEAL_Payment
 
 	public function setBankId ($bank_id)
 	{
-		if (ctype_digit((string) $bank_id) && strlen($bank_id) != 4)
+		$bank_id = trim($bank_id);
+
+		if (ctype_digit($bank_id) && strlen($bank_id) != 4)
 			return false;
 
 		if (!$this->testmode && ($bank_id == self::TEST_BANK_ID || $bank_id == self::TEST_BANK_BIC))
