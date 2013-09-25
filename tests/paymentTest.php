@@ -395,6 +395,9 @@ class idealClassTest extends PHPUnit_Framework_TestCase
 		);
 	}
 
+	/**
+	 * @requires function mb_substr
+	 */
 	public function testSetDescriptionWorksWithUtf8()
 	{
 		$ideal = new Mollie_iDEAL_Payment(1001);
