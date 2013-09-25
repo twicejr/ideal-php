@@ -1,6 +1,7 @@
 <?php
 /**
  * @covers Mollie_iDEAL_Payment
+ * @group ideal-php
  */
 class idealClassTest extends PHPUnit_Framework_TestCase
 {
@@ -392,5 +393,14 @@ class idealClassTest extends PHPUnit_Framework_TestCase
 			array("https://www.example.org/credits/back?param=ok", TRUE),
 			array("httpsu://www.example.org", FALSE),
 		);
+	}
+
+	public function testSetDescriptionWorksWithUtf8()
+	{
+		$ideal = new Mollie_iDEAL_Payment(1001);
+		$exactly_29_utf8_characters = "€ 25 Café in de Überingstraße";
+
+		$ideal->setDescription($exactly_29_utf8_characters);
+		$this->assertEquals($exactly_29_utf8_characters, $ideal->getDescription());
 	}
 }

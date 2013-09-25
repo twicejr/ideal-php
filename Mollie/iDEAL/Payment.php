@@ -422,7 +422,7 @@ class Mollie_iDEAL_Payment
 
 	public function setDescription ($description)
 	{
-		$description = substr($description, 0, 29);
+		$description = function_exists("mb_substr") ? mb_substr($description, 0, 29) : substr($description, 0, 29);
 
 		return ($this->description = $description);
 	}
