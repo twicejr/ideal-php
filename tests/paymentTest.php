@@ -400,10 +400,19 @@ class idealClassTest extends PHPUnit_Framework_TestCase
 	 */
 	public function testSetDescriptionWorksWithUtf8()
 	{
+		$current_encoding = mb_internal_encoding();
+
+		if ($current_encoding != "UTF-8")
+		{
+			mb_internal_encoding("UTF-8");
+		}
+
 		$ideal = new Mollie_iDEAL_Payment(1001);
 		$exactly_29_utf8_characters = "€ 25 Café in de Überingstraße";
 
 		$ideal->setDescription($exactly_29_utf8_characters);
 		$this->assertEquals($exactly_29_utf8_characters, $ideal->getDescription());
+
+		mb_internal_encoding($current_encoding);
 	}
 }
