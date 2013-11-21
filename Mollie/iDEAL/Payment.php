@@ -265,7 +265,7 @@ class Mollie_iDEAL_Payment
 
 		$body = curl_exec($ch);
 
-		if (curl_errno($ch) == CURLE_SSL_CACERT)
+		if (curl_errno($ch) == CURLE_SSL_CACERT || curl_errno($ch) == CURLE_SSL_PEER_CERTIFICATE || curl_errno($ch) == 77 /* CURLE_SSL_CACERT_BADFILE (constant not defined in PHP though) */)
 		{
 			/*
 			 * On some servers, the list of installed certificates is outdated or not present at all (the ca-bundle.crt
