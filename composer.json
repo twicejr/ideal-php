@@ -4,7 +4,9 @@
 	"license": "BSD-2-Clause",
 	"homepage": "https://www.mollie.nl/",
     "autoload": {
-        "classmap": ["Mollie/"]
+        "psr-0": {
+             "Mollie": ""
+        }
     },
     "extra": {
         "branch-alias": {

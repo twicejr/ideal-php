@@ -4,7 +4,9 @@
  *
  * @link https://www.mollie.nl/support/documentatie/betaaldiensten/ideal/
  */
-class Mollie_iDEAL_Payment
+namespace Mollie;
+
+class IdealPayment
 {
 	const STATUS_OPEN           = 'Open';
 	const STATUS_SUCCESS        = 'Success';
@@ -315,7 +317,7 @@ class Mollie_iDEAL_Payment
 	 * @param $xml SimpleXMLElement
 	 * @return bool
 	 */
-	protected function _XMLisError(SimpleXMLElement $xml)
+	protected function _XMLisError(\SimpleXMLElement $xml)
 	{
 		/*
 		 * Normale API errors, zoals ongeldige parameters et cetera.
